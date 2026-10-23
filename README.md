@@ -4,14 +4,19 @@ An open, community-contributed dataset of AI models for estimating software ("al
 
 ## Status
 
-v0 scaffold (2026-10-23): schema, validator, Epoch importers, CI, and HF publishing are in place. `data/` has headers only until the first import.
+v0 (2026-10-23): seeded from Epoch AI and validating cleanly.
+
+- `models.csv`: 3,616 models across domains. 1,410 have a training compute estimate; 213 language models have an ECI score.
+- `evals.csv`: 4,203 benchmark scores over ~45 benchmarks, all normalized to fractions (0 to 1).
+- Not imported: 737 benchmark rows whose model isn't in Epoch's AI Models database, 500 duplicate runs (the first one is kept), and 57 ECI scores with no matching model.
+- To refresh: double-click `fetch-epoch-data.command`, then run `python3 scripts/import_epoch_models.py raw/all_ai_models.csv` and `python3 scripts/import_epoch_benchmarks.py raw/benchmark_data.zip`.
 
 ```
 data/models.csv, data/evals.csv   the dataset (see SCHEMA.md)
 scripts/schema.py                 column definitions (source of truth)
 scripts/validate.py               checks every PR (stdlib only)
 scripts/import_epoch_models.py    seeds models.csv from Epoch AI
-scripts/import_epoch_benchmarks.py  seeds evals.csv (needs a one-time --inspect)
+scripts/import_epoch_benchmarks.py  seeds evals.csv + eci from Epoch's benchmark zip
 scripts/push_to_hf.py             publishes to Hugging Face (CI, on merge)
 hf/README.md                      Hugging Face dataset card
 ```

@@ -50,8 +50,9 @@ def main(data_dir="data"):
         ids.setdefault(m["model_id"], i)
         try:
             lo, mid, hi = (float(m[k]) if m[k] else None for k in ("compute_lower_flop", "training_compute_flop", "compute_upper_flop"))
-            if lo is not None and hi is not None and lo > hi: errors.append(f"models.csv:{i} compute_lower_flop > compute_upper_flop")
-            if mid is not None and ((lo is not None and mid < lo) or (hi is not None and mid > hi)):
+            tol = 1.01  # allow 1% for rounding in source data
+            if lo is not None and hi is not None and lo > hi * tol: errors.append(f"models.csv:{i} compute_lower_flop > compute_upper_flop")
+            if mid is not None and ((lo is not None and mid * tol < lo) or (hi is not None and mid > hi * tol)):
                 errors.append(f"models.csv:{i} training_compute_flop outside [lower, upper]")
         except ValueError: pass  # already reported above
         if m["eci"] and "Language" not in m["domain"].split(LIST_SEP):
