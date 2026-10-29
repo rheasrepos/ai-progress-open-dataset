@@ -6,9 +6,11 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    # Skips (green) until the HF_TOKEN secret and HF_DATASET_REPO variable are set in repo settings.
+    if: ${{ vars.HF_DATASET_REPO != '' }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: python scripts/validate.py
       - run: pip install huggingface_hub
