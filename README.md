@@ -2,6 +2,10 @@
 
 An open, community-contributed dataset of AI models for estimating software ("algorithmic") progress, hosted on Hugging Face.
 
+## Related
+
+Part of [Open data for the world's biggest problems](https://rheamad.vercel.app/ai-problems), listed under "AI as a black box." Companion repo: [ai-fixable-problems-db](https://github.com/rheasrepos/ai-fixable-problems-db).
+
 ## Status
 
 v0 (2026-10-23): seeded from Epoch AI and validating cleanly.
