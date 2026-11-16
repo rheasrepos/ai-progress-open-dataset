@@ -4,7 +4,7 @@ An open, community-contributed dataset of AI models for estimating software ("al
 
 ## Related
 
-Part of [Open data for the world's biggest problems](https://rheamad.vercel.app/ai-problems), listed under "AI as a black box." Companion repo: [ai-fixable-problems-db](https://github.com/rheasrepos/ai-fixable-problems-db).
+Part of [Open data for the world's biggest problems](https://rheamad.vercel.app/ai-problems), listed under "Lack of interpretability of AI models." Companion repo: [ai-fixable-problems-db](https://github.com/rheasrepos/ai-fixable-problems-db).
 
 ## Status
 
