@@ -48,6 +48,7 @@ He notes that training compute is often unknown and that long-running capability
 - [x] Does this already exist (on Hugging Face or elsewhere)? Partly. See "Existing data" below (checked 2026-10-23).
 - [ ] Email data@epoch.ai to ask whether an HF mirror or join is welcome.
 - [ ] Decide on a capability measure that doesn't saturate (ECI? a long-running benchmark?).
+- [ ] Should the dataset also say whether each model is open and whether anyone uses it? No tracker checked records that. See "Does anyone track whether a model is used?" in RELATED_WORK.md (2026-11-16).
 
 ## Existing data (research, 2026-10-23)
 

@@ -38,6 +38,42 @@ on the same dimensions, so the gaps are comparable.
 - [ ] Keep the GitHub-CSV-first design (finding 3).
 - [ ] Make "fill in a compute estimation method" a first contribution task (finding 4).
 
+## Does anyone track whether a model is used? (surveyed 2026-11-16)
+
+A second question, from a paper on a classifier that was published but never released: how much open AI goes
+unused, and does any tracker record it? Full report and per-tool rows live in the companion repo:
+[UNUSED_TOOLS_REPORT.md](https://github.com/rheasrepos/ai-fixable-problems-db/blob/main/UNUSED_TOOLS_REPORT.md)
+and `data/tools.csv`.
+
+| Tracker | Records | Deployment recorded? | License |
+|---|---|---|---|
+| [Epoch AI, AI Models](https://epoch.ai/data/ai-models-documentation/records) | 33 fields: bibliographic, compute, hardware, accessibility | no ("significant use" is only an inclusion criterion) | CC-BY |
+| Hugging Face Hub API | downloads, likes, dates, tags, license (field list not verified) | no, downloads only | platform terms (not verified) |
+| [PeaTMOSS](https://arxiv.org/pdf/2310.03620) | 281,638 model packages; 44,337 links to GitHub repos that use them | partly: public code reuse only | not stated |
+| [OpenSSF Criticality Score](https://github.com/ossf/criticality_score) | 10 activity and dependency signals | no | Apache-2.0 |
+| [OECD.AI catalogue of tools and metrics](https://oecd.ai/en/tools-faq) | tools by principle and purpose; drops tools stale for 2 years | partly: optional self-reported use cases | not stated |
+| [SciCat](https://arxiv.org/pdf/2504.18971) | 18,247 scientific repos labelled active or inactive | no | not checked |
+
+Measured base rates (all Hub repositories, mostly personal fine-tunes, so not a rate for public-interest tools):
+
+- 71% of Hugging Face models and 70% of datasets had zero downloads; under 1% of models took 80% of
+  downloads; 65% of models had no license (348,181 models, Oct 2023, [Osborne et al.](https://arxiv.org/html/2405.13058v1)).
+- Roughly half of 2M+ models have under 200 lifetime downloads (Mar 2026,
+  [Hugging Face](https://huggingface.co/blog/huggingface/state-of-os-hf-spring-2026)). A different metric from
+  the 2023 one, so the two don't form a trend.
+- Hub download counts include every GET and HEAD request, with no documented bot filtering
+  ([HF docs](https://huggingface.co/docs/hub/models-download-stats)).
+- About 64% of scientific repositories had no commit in 6 months by 2023 (derived from counts in
+  [SciCat](https://arxiv.org/pdf/2504.18971)).
+
+What it shows: **no tracker checked records deployment as a measured field.** Epoch's 33 fields have none.
+
+- [ ] Decide whether `models.csv` gets openness, lineage (`base_model` exists), maintenance and use-status
+      columns. Proposed values are in the companion repo's `SCHEMA.md` (tools table). They are a proposal:
+      no source validates downloads or dependents against real deployment.
+- [ ] Recompute the zero-download share from a current Hub snapshot (last measured Oct 2023).
+- Do not use "87% of ML projects never reach production": no primary source was found.
+
 ## Not yet checked
 
 LMArena, Artificial Analysis, OpenCompass, Stanford HELM, Stanford AI Index data, LifeArchitect's models table.
